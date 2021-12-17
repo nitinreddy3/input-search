@@ -122,13 +122,20 @@ const TagsInput = (props) => {
         />
       </div>
       {showSelectDropdown && !filteredList.length && (
-        <select onChange={(e) => selectItem(e)} multiple style={{ width: 480 }}>
-          {list}
-        </select>
+        <div style={{ position: 'relative' }}>
+          <button onClick={() => setShowSelectDropdown(false)} style={{ position: 'absolute', top: 0, right: 0 }}>X</button>
+          <select onChange={(e) => selectItem(e)} multiple style={{ width: 480 }}>
+            {list}
+          </select>
+
+        </div>
       )}
-      {filteredList.length > 0 && <select onChange={(e) => selectItem(e)} multiple style={{ width: 480 }}>
-        {filteredList}
-      </select>}
+      {filteredList.length > 0 && <div style={{ position: 'relative' }}>
+        <button onClick={() => setShowSelectDropdown(false)} style={{ position: 'absolute', top: 0, right: 0 }}>X</button>
+        <select onChange={(e) => selectItem(e)} multiple style={{ width: 480 }}>
+          {filteredList}
+        </select>
+      </div>}
     </>
   );
 };
