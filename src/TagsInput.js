@@ -103,7 +103,7 @@ const TagsInput = (props) => {
                 className="tag-close-icon"
                 onClick={() => removeTags(index)}
               >
-                x
+                X
               </span>
             </li>
           ))}
