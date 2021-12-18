@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { data } from "./constant";
 
 const TagsInput = (props) => {
-  const formattedList = (list, keys) => {
+  const formattedList = (list) => {
     return list.map((item) => {
       if (item.isHeaderGroup) {
         return (
@@ -59,10 +59,6 @@ const TagsInput = (props) => {
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
   };
   const addTags = (e) => {
-    // if (event.target.value !== "") {
-    //   setTags([...tags, event.target.value]);
-    //   event.target.value = "";
-    // }
     const { value, id } = e.target || {};
     if (value !== "") {
       filteredList = list.filter(i => i.toLowerCase().includes(value.toLowerCase()) || i.toLowerCase().includes(id.toLowerCase()))
@@ -130,12 +126,12 @@ const TagsInput = (props) => {
 
         </div>
       )}
-      {filteredList.length > 0 && <div style={{ position: 'relative' }}>
+      {filteredList.length > 0 && !showSelectDropdown && (<div style={{ position: 'relative' }}>
         <button onClick={() => setShowSelectDropdown(false)} style={{ position: 'absolute', top: 0, right: 0 }}>X</button>
         <select onChange={(e) => selectItem(e)} multiple style={{ width: 480 }}>
           {filteredList}
         </select>
-      </div>}
+      </div>)}
     </>
   );
 };
